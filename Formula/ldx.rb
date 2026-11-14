@@ -11,7 +11,7 @@ class Ldx < Formula
   sha256 "0000000000000000000000000000000000000000000000000000000000000000"
   head "https://github.com/roguexz/dev-rig.git", branch: "main"
 
-  depends_on "anchore/tap/grype"
+  depends_on "grype"
   depends_on "hashicorp/tap/vault"
   depends_on "helm"
   depends_on "jq"
@@ -19,17 +19,22 @@ class Ldx < Formula
   depends_on "terminal-notifier"
 
   def install
-    # GitHub archive tarballs unpack under a dev-rig-<version>/ prefix.
-    root = Dir["dev-rig-*"].first
-    raise "unexpected archive layout" if root.nil?
-
+    # Homebrew strips the archive's top-level directory (dev-rig-<version>/)
+    # before running this, so the tree is already at the staging root.
     # Install the whole tree (bin/, bin/lib/, config/, charts/, cvescan/,
     # lib/, skills/, VERSION) under the prefix. bin/ldx resolves LDX_HOME
     # from its realpath, so commands and assets are found under the prefix
-    # at runtime. Homebrew's bin directory is on the PATH, so the bin/ldx
-    # link is the only wiring a user needs.
-    prefix.install Dir["#{root}/*"]
-    bin.install_symlink prefix/"bin/ldx"
+    # at runtime. Everything in prefix/bin is linked into Homebrew's bin
+    # directory automatically by `brew link`, which is all the PATH wiring a
+    # user needs. Do NOT add bin.install_symlink here: the tree is already in
+    # prefix/bin, and a self-referential symlink replaces bin/ldx.
+    prefix.install Dir["*"]
+
+    # Stamp the package version so `ldx --version` reports it without a git
+    # checkout: the dispatcher falls back to LDX_HOME/VERSION. The source of
+    # truth for brew installs is this formula's version, set by the release
+    # workflow from the git tag.
+    (prefix/"VERSION").write("#{version}\n")
   end
 
   def caveats

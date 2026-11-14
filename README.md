@@ -5,9 +5,15 @@ Development Experience CLI (local Kubernetes stacks, TLS, secrets, security
 tools).
 
 ```bash
+brew tap hashicorp/tap   # vault dependency (not in homebrew-core)
 brew tap roguexz/ldx
 brew install roguexz/ldx/ldx
 ```
+
+Homebrew does not tap third-party taps automatically, so
+`hashicorp/tap` (for `vault`) must be tapped explicitly before installing.
+`grype`, `helm`, `jq`, `mkcert` and `terminal-notifier` come from
+homebrew-core.
 
 Upgrades: `brew upgrade roguexz/ldx/ldx`.
 
