@@ -8,7 +8,7 @@ class Ldx < Formula
   # so a release can never half-install.
   url "https://github.com/roguexz/dev-rig/archive/refs/tags/0.7.0.tar.gz"
   version "0.7.0"
-  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+  sha256 "811603f15d75725970522a7543fada8979cfc187c5150223c7faaa408ac44916"
   head "https://github.com/roguexz/dev-rig.git", branch: "main"
 
   depends_on "grype"
