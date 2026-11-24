@@ -12,8 +12,9 @@ brew install roguexz/ldx/ldx
 
 Homebrew does not tap third-party taps automatically, so
 `hashicorp/tap` (for `vault`) must be tapped explicitly before installing.
-`grype`, `helm`, `jq`, `mkcert` and `terminal-notifier` come from
-homebrew-core.
+`bash`, `grype`, `helm`, `jq`, `mkcert` and `terminal-notifier` come from
+homebrew-core. `bash` is a hard dependency: the ldx scripts require bash 4+
+(macOS ships bash 3.2, frozen by Apple) and refuse to run on older shells.
 
 Upgrades: `brew upgrade roguexz/ldx/ldx`.
 

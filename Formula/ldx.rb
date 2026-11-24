@@ -11,6 +11,7 @@ class Ldx < Formula
   sha256 "bd12996d4bacec34e5f1a172d7a957fd1a2d3d0996e4c04914beaf26ef62a08f"
   head "https://github.com/roguexz/dev-rig.git", branch: "main"
 
+  depends_on "bash" # the scripts require bash 4+; macOS ships 3.2
   depends_on "grype"
   depends_on "hashicorp/tap/vault"
   depends_on "helm"
