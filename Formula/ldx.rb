@@ -6,9 +6,9 @@ class Ldx < Formula
   # hash of that tag's GitHub-built archive. The all-zeros sha256 below is a
   # placeholder: an unbumped formula fails the checksum check on install,
   # so a release can never half-install.
-  url "https://github.com/roguexz/dev-rig/archive/refs/tags/0.9.0.tar.gz"
-  version "0.9.0"
-  sha256 "b0d66be5a72b4809e78b0d535556e0d48340e29823d54ce5767b970f446866a8"
+  url "https://github.com/roguexz/dev-rig/archive/refs/tags/0.10.0.tar.gz"
+  version "0.10.0"
+  sha256 "bd12996d4bacec34e5f1a172d7a957fd1a2d3d0996e4c04914beaf26ef62a08f"
   head "https://github.com/roguexz/dev-rig.git", branch: "main"
 
   depends_on "grype"
